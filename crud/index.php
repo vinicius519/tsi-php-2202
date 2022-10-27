@@ -1,29 +1,18 @@
 <?php
-require_once '../BancoDeDados/conecta.php';
 
-$stmt = $bd->query('SELECT id,nome,turno,inicio FROM alunos');
+require_once '../banco de dados/conecta.php';
 
-echo '<table border="1">
-        <tr>
-            <td>ID</td>
-            <td>NOME</td>
-            <td>TURNO</td>
-            <td>INICIO</td>
-            <td>AÇÕES</td>
 
-        </tr>';
+$stmt = $bd->query('SELECT id, nome, turno, inicio FROM alunos');  
 
 
 
-while($registro = $stmt -> fetch(PDO::FETCH_ASSOC)){
+$alunos = [];
 
-    echo "<tr>
-                <td>{$registro['id']}</td>
-                <td>{$registro['nome']}</td>
-                <td>{$registro['turno']}</td>
-                <td>{$registro['inicio']}</td>
-                <td></td>
-    
-          </tr>";
-};
-echo '</table>';
+
+while( $registro = $stmt->fetch(PDO::FETCH_ASSOC) ){
+    $alunos[] = $registro;
+}
+
+
+include 'view/listar.php';
