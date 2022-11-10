@@ -19,4 +19,5 @@ $stmt->bindParam(':id', $id);
 
 $stmt->execute();
 
+
 $aluno = $stmt->fetch(PDO::FETCH_ASSOC);
